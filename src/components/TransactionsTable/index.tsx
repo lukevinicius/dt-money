@@ -1,16 +1,26 @@
-import { useEffect, useState } from "react";
-import { api } from "../../services/api";
-import { Container } from "./styles";
+import { useEffect, useState } from 'react';
+import { api } from '../../services/api';
+import { Container } from './styles';
+
+interface Transaction {
+  id: number;
+  title: string;
+  amount: number;
+  type: string;
+  category: string;
+  createdAt: string;
+}
 
 export function TransactionsTable() {
-  const [transactions, setTransactions] = useState()
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   useEffect(() => {
-    api.get('http://localhost:3000/api/transactions')
-    .then(data => setTransactions(data.data));
-  }, [])
+    api
+      .get('transactions')
+      .then(response => setTransactions(response.data.transactions));
+  }, []);
 
-  return(
+  return (
     <Container>
       <table>
         <thead>
@@ -22,20 +32,25 @@ export function TransactionsTable() {
           </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>teste</td>
-            <td className="deposit">R$1000</td>
-            <td>Desenvolvimento</td>
-            <td>30/01/2001</td>
-          </tr>
-          <tr>
-            <td>teste</td>
-            <td className="withdraw">-R$500</td>
-            <td>Desenvolvimento</td>
-            <td>30/01/2001</td>
-          </tr>
+          {transactions.map(transaction => (
+            <tr key={transaction.id}>
+              <td>{transaction.title}</td>
+              <td className={transaction.type}>
+                {new Intl.NumberFormat('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                }).format(transaction.amount)}
+              </td>
+              <td>{transaction.category}</td>
+              <td>
+                {new Intl.DateTimeFormat('pt-BR').format(
+                  new Date(transaction.createdAt),
+                )}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Container>
-  )
+  );
 }

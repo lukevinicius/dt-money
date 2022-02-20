@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 
 import closeImg from '../../assets/close.svg';
@@ -53,7 +53,7 @@ export function NewTransactionModal({
         <img src={closeImg} alt="close button" />
       </button>
 
-      <Container onSubmit={handleCreateNewTransaction}>
+      <Container onSubmit={() => handleCreateNewTransaction}>
         <h2>Cadastrar transação</h2>
 
         <form>

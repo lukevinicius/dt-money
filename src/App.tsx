@@ -1,16 +1,25 @@
 import { useState } from 'react'
+import Modal from 'react-modal'
 import { Dashboard } from './components/Dashboard'
 import { Header } from './components/Header'
-import logo from './logo.svg'
+import { NewTransactionModal } from './components/NewTransactionModal'
 import { GlobalStyle } from './styles/global'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isNewTransactionModal, setIsNewTransactionModal] = useState(false);
+
+  function handleNewTransactionModal() {
+    setIsNewTransactionModal(!isNewTransactionModal)
+  }
 
   return (
     <>
-      <Header />
+      <Header onHandleNewTransitionModal={handleNewTransactionModal} />
       <Dashboard />
+      <NewTransactionModal
+        isOpen={isNewTransactionModal}
+        onRequestClose={handleNewTransactionModal}
+      />
       <GlobalStyle />
     </>
   )

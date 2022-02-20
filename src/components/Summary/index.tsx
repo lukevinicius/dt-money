@@ -1,10 +1,10 @@
-import { Container } from "./styles";
-import incomeImg from '../../assets/income.svg'
-import outcomeImg from '../../assets/outcome.svg'
-import totalImg from '../../assets/total.svg'
+import { Container } from './styles';
+import incomeImg from '../../assets/income.svg';
+import outcomeImg from '../../assets/outcome.svg';
+import totalImg from '../../assets/total.svg';
 
 export function Summary() {
-  return(
+  return (
     <Container>
       <div>
         <header>
@@ -22,11 +22,11 @@ export function Summary() {
       </div>
       <div className="highlight-background">
         <header>
-          <p>Entradas</p>
+          <p>Total</p>
           <img src={totalImg} alt="Entradas" />
         </header>
         <strong>R$1000,00</strong>
       </div>
     </Container>
-  )
+  );
 }

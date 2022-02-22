@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">	
-   <a href="https://www.linkedin.com/in/leonne-sousa-brito/">
+   <a href="https://linkedin.com/in/lukevinicius/">
       <img alt="Lucasvinicius" src="https://img.shields.io/badge/-lukevinicius-5965e0?style=flat&logo=Linkedin&logoColor=white" />
    </a>
   <img alt="Languages" src="https://img.shields.io/github/languages/count/lukevinicius/dt-money?color=%235963C5" />
@@ -61,7 +61,7 @@ $ git clone https://github.com/lukevinicius/dt-money.git
 # Install Dependencies
 $ yarn
 # Run Aplication
-$ yarn start
+$ yarn dev
 ```
 Go to http://localhost:3000/ to see the result.
 
